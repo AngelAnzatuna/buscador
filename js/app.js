@@ -94,7 +94,23 @@ function mostrarYears() {
 
 function filtrarAuto() {
     const resultado = autos.filter(filtrarMarca).filter(filtrarYear).filter(filtrarMinimo).filter(filtrarMaximo).filter(filtrarPuertas).filter(filtrarTransmision).filter(filtrarColor);
-    mostrarAutos(resultado);
+    
+    limpiarAutos();
+
+    if(resultado.length) {
+        mostrarAutos(resultado);
+    } else {
+        alertaSinResultado()
+    }
+    
+}
+
+function alertaSinResultado() {
+    const alerta = document.createElement('DIV');
+    alerta.textContent = 'No hay resultado para tu filtro, prueba con otras opciones de filtro';
+    alerta.classList.add('alerta', 'error');
+
+    resultado.appendChild(alerta);
 }
 
 function filtrarMarca(auto) {
